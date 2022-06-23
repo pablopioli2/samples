@@ -1,0 +1,12 @@
+title Inscripcion a examen
+
+UI->Controller:Inscribir(legajo, materia, fecha)
+Controller->Persistencia:BuscarAlumnoPorLegajo(legajo)
+Persistencia->Alumno:create
+Controller->Persistencia:BuscarMateriaPorId(idMateria)
+Persistencia->Materia:create
+Controller->Persistencia:BuscarExamenPorFecha(idMateria, fecha)
+Persistencia->Examen:create
+Controller->Controller:ValidarSiElAlumnoCursoLaMateria()
+Controller->InscripcionExamen:create
+Controller->Persistencia:GuardarInscripcion(inscripcion)
